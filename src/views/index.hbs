@@ -1,1 +1,186 @@
-<p>Lorem ipsum dolor sit amet.</p>
+<div class="global-chat">
+    <div class="chat-users">
+        <div class="chat-users--search rounded">
+            <form>
+                <div class="form-control-inline">
+                    <div class="form-control-inline--icon">O</div>
+                    <input type="search" class="form-control-inline--input" placeholder="Search contact">
+                </div>
+            </form>
+        </div>
+        <div class="chat-users--list rounded" >
+            <div class="chat-users--list-scroll">
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile1.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Lisa Akira</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile2.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Celeste Suru</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile3.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Anne Misuri</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile1.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Lisa Akira</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile2.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Celeste Suru</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile3.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Anne Misuri</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile1.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Lisa Akira</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile2.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Celeste Suru</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile3.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Anne Misuri</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile1.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Lisa Akira</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile2.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Celeste Suru</span>
+                    </div>
+                </div>
+                <div class="chat-user">
+                    <div class="chat-user-img">
+                        <img src="img/profile3.jpg" alt="">
+                    </div>
+                    <div class="chat-user-info">
+                        <span class="chat-user-info--name">Anne Misuri</span>
+                    </div>
+                </div>
+                {{#if usersConnected }}
+                <div id="usersList">
+                    {{#each usersConnected }}
+                    <p style="margin: 1rem 0; background-color: yellow;">
+                        {{nickname}} || {{date}}
+                    </p>
+                    {{/each}}
+                </div>
+                {{else}}
+                <p>No users connected</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-box">
+        {{!-- <div class="chat-box-user">
+            <h2 class="chat-box-user--name">Steven Crown</h2>
+            <div class="chat-box-user--state"></div>
+        </div> --}}
+        <div class="chat-box--block">
+            <div class="chat-box-message rounded">
+                <div class="chat-box-message--scroll">
+                    <div class="message received">
+                        <div class="message-user-img" title="Jhon wick">
+                            <img src="img/profile4.jpg" alt="">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum dolor sit amet consectetur.</span>
+                            </div>
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque officia velit possimus fugiat ut animi labore! Nostrum libero explicabo quod. </span>
+                            </div>
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum dolor sit amet consectetur.</span>
+                            </div>
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum </span>
+                            </div>
+                        </div>
+                        <div class="message-timeago">10 min ago</div>
+                    </div>
+                    <div class="message emited">
+                        <!-- <div class="message-user-img">
+                                <img src="img/profile5.jpg" alt="" >
+                            </div> -->
+                        <div class="message-content">
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum dolor sit amet consectetur.</span>
+                            </div>
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum dolor sit amet consectetur.</span>
+                            </div>
+                            <div class="message-text">
+                                <span class="message-text--span">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.
+                                    Libero,
+                                    illo.</span>
+                            </div>
+                        </div>
+                        <div class="message-timeago">2 min ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-box-send rounded">
+                <form>
+                    <div class="form-control-inline">
+                        <input type="text" class="form-control-inline--input" placeholder="Enter some message text ...">
+                        <div class="form-control-inline--icon icom-right">O</div>
+                        <div class="form-control-inline--icon icom-right">O</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- Gloabl chat --}}

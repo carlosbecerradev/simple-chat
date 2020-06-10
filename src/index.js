@@ -3,7 +3,7 @@ const http = require('http');
 
 const server = http.createServer(app);
 
-require('./database');
+// require('./database');
 require('./sockets').connection(server);
 
 server.listen(app.get('port'), () => {
