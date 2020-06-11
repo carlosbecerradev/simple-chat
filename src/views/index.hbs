@@ -1,3 +1,35 @@
+<div class="registration">
+    <div class="chat-registration" style="width: 40%; margin-top: 2rem" >
+    <h1 class="chat-registration--title">Sign Up</h1>
+    <div class="login-forgot"><a href="#"><small>Or sign in</small></a></div>
+    <div class="chat-login--form">
+        <form action="/sign-up" method="POST" >
+            <div class="form-control-inline rounded-purple">
+                <div class="form-control-inline--icon">
+                    <i class="fas fa-at"></i>
+                </div>
+                <input name="email" type="email" class="form-control-inline--input" placeholder="Email">
+            </div>
+            <div class="form-control-separator" style="padding: .5rem;"></div>
+            <div class="form-control-inline rounded-purple">
+                <div class="form-control-inline--icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <input name="nickname" type="text" class="form-control-inline--input" placeholder="Nickname">
+            </div>
+            <div class="form-control-separator" style="padding: .5rem;"></div>
+            <div class="form-control-inline rounded-purple">
+                <div class="form-control-inline--icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <input name="password" type="password" class="form-control-inline--input" placeholder="Password">
+            </div>
+            <button class="login-button">Confirm</button>
+        </form>
+    </div>
+</div>
+</div>
+{{!-- Registration --}}
 <div class="login">
     <div class="chat-login" style="width: 40%; margin-top: 2rem" >
     <h1 class="chat-login--title">Sign in</h1>
@@ -30,7 +62,6 @@
     </div>
 </div>
 </div>
-
 {{!-- Login --}}
 <div class="global-chat">
     <div class="chat-users">
