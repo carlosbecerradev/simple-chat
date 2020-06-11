@@ -1,0 +1,10 @@
+
+.nav-dropdown--list.active {
+    display: block;
+}
+.global-chat {
+    display: none;
+}
+.chat-login {
+    display: none;
+}

@@ -90,9 +90,6 @@ a {
     border: 1px solid var(--blue);
     display: none;
 }
-.nav-dropdown--list.active {
-    display: block;
-}
 
 .dropdown {
     padding: .5rem 0;
@@ -369,7 +366,7 @@ a {
 /** LOGIN */
 
 .chat-login, .chat-registration {
-    padding: 3rem;
+    padding: 2rem 3rem;
     text-align: center;
     /* width: 50%; */
     margin-left: auto;
@@ -379,7 +376,7 @@ a {
 }
 
 .chat-login--title, .chat-registration--title {
-    color: lightsalmon;
+    color: var(--purple);
 }
 
 .chat-login--rr-ss {
@@ -392,7 +389,7 @@ a {
 }
 
 .login-forgot {
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .login-forgot a {
@@ -403,20 +400,21 @@ a {
 .login-button {
     display: block;
     width: 100%;
-    padding: 1rem 3rem;
+    padding: .8rem 3rem;
     border-radius: 10px;
     border: none;
-    color: white;
-    background-color: lightsalmon;
+    color: var(--purple);
     transition: background-color .5s ease;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: 1px solid var(--purple);
 }
 
 .login-button:hover {
-    color: black;
+    color: white;
+    background-color: var(--purple);
 }
 
 .bgc-gray {
@@ -426,4 +424,8 @@ a {
 
 .rounded {
     border-radius: 10px;
+}
+.rounded-purple {
+    border-radius: 10px;
+    border: 1px solid var(--purple);
 }
