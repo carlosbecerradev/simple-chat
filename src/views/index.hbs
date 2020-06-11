@@ -3,14 +3,16 @@
         <div class="chat-users--search rounded">
             <form>
                 <div class="form-control-inline">
-                    <div class="form-control-inline--icon">O</div>
+                    <div class="form-control-inline--icon">
+                        <i class="fas fa-search"></i>
+                    </div>
                     <input type="search" class="form-control-inline--input" placeholder="Search contact">
                 </div>
             </form>
         </div>
         <div class="chat-users--list rounded" >
             <div class="chat-users--list-scroll">
-                <div class="chat-user">
+                <div class="chat-user hover-item">
                     <div class="chat-user-img">
                         <img src="img/profile1.jpg" alt="">
                     </div>
@@ -18,7 +20,7 @@
                         <span class="chat-user-info--name">Lisa Akira</span>
                     </div>
                 </div>
-                <div class="chat-user">
+                <div class="chat-user hover-item">
                     <div class="chat-user-img">
                         <img src="img/profile2.jpg" alt="">
                     </div>
@@ -26,7 +28,7 @@
                         <span class="chat-user-info--name">Celeste Suru</span>
                     </div>
                 </div>
-                <div class="chat-user">
+                <div class="chat-user hover-item">
                     <div class="chat-user-img">
                         <img src="img/profile3.jpg" alt="">
                     </div>
@@ -34,78 +36,7 @@
                         <span class="chat-user-info--name">Anne Misuri</span>
                     </div>
                 </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile1.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Lisa Akira</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile2.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Celeste Suru</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile3.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Anne Misuri</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile1.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Lisa Akira</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile2.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Celeste Suru</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile3.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Anne Misuri</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile1.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Lisa Akira</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile2.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Celeste Suru</span>
-                    </div>
-                </div>
-                <div class="chat-user">
-                    <div class="chat-user-img">
-                        <img src="img/profile3.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Anne Misuri</span>
-                    </div>
-                </div>
+                
                 {{#if usersConnected }}
                 <div id="usersList">
                     {{#each usersConnected }}
@@ -175,8 +106,12 @@
                 <form>
                     <div class="form-control-inline">
                         <input type="text" class="form-control-inline--input" placeholder="Enter some message text ...">
-                        <div class="form-control-inline--icon icom-right">O</div>
-                        <div class="form-control-inline--icon icom-right">O</div>
+                        <div class="form-control-inline--icon icom-right">
+                            <i class="fas fa-grin-tongue-squint" title="add emoji"></i>
+                        </div>
+                        <div class="form-control-inline--icon icom-right" style="border-left: 1px solid var(--blue);">
+                            <i class="fas fa-location-arrow" title="send message"></i>
+                        </div>
                     </div>
                 </form>
             </div>
