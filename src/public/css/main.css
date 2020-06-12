@@ -430,3 +430,7 @@ a {
     border-radius: 10px;
     border: 1px solid var(--purple);
 }
+.small-link {
+    border-bottom: 1px dotted #000;
+    cursor: pointer;
+}

@@ -5,6 +5,9 @@
 .global-chat {
     display: none;
 }
-.chat-login {
+.registration {
+    display: block;
+}
+.login {
     display: none;
 }

@@ -1,9 +1,11 @@
 <div class="registration">
     <div class="chat-registration" style="width: 40%; margin-top: 2rem" >
     <h1 class="chat-registration--title">Sign Up</h1>
-    <div class="login-forgot"><a href="#"><small>Or sign in</small></a></div>
+    <div class="login-forgot">
+        <small id="smSignIn" class="small-link">Or sign in</small>
+    </div>
     <div class="chat-login--form">
-        <form action="/sign-up" method="POST" >
+        <form id="registration" action="/sign-up" method="POST" >
             <div class="form-control-inline rounded-purple">
                 <div class="form-control-inline--icon">
                     <i class="fas fa-at"></i>
@@ -39,10 +41,12 @@
             <small>Gmail</small>
             <small>Twitter</small>
         </div> --}}
-        <div class="login-forgot"><a href="/sign-up"><small>Or sign up</small></a></div>
+        <div class="login-forgot">
+            <small id="smSignUp" class="small-link">Or sign up</small>
+        </div>
     </div>
     <div class="chat-login--form">
-        <form action="/sign-in" method="POST" >
+        <form id="login" action="/sign-in" method="POST" >
             <div class="form-control-inline rounded-purple ">
                 <div class="form-control-inline--icon">
                     <i class="fas fa-at"></i>
@@ -66,12 +70,12 @@
 <div class="global-chat">
     <div class="chat-users">
         <div class="chat-users--search rounded">
-            <form>
+            <form id="searchUser">
                 <div class="form-control-inline">
                     <div class="form-control-inline--icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <input type="search" class="form-control-inline--input" placeholder="Search contact">
+                    <input id="searchUserInput" type="search" class="form-control-inline--input" placeholder="Search contact">
                 </div>
             </form>
         </div>
@@ -168,15 +172,16 @@
                 </div>
             </div>
             <div class="chat-box-send rounded">
-                <form>
+                <form id="sendMessage">
                     <div class="form-control-inline">
-                        <input type="text" class="form-control-inline--input" placeholder="Enter some message text ...">
-                        <div class="form-control-inline--icon icom-right">
+                        <input id="sendMessageInput" type="text" style="padding: .4rem 0" 
+                            class="form-control-inline--input" placeholder="Enter some message text ...">
+                        {{!-- <div class="form-control-inline--icon icom-right">
                             <i class="fas fa-grin-tongue-squint" title="add emoji"></i>
-                        </div>
-                        <div class="form-control-inline--icon icom-right" style="border-left: 1px solid var(--blue);">
-                            <i class="fas fa-location-arrow" title="send message"></i>
-                        </div>
+                        </div> --}}
+                        <button class="form-control-inline--icon icom-right" style="cursor: pointer;border: none;border-left: 1px solid var(--blue); background: none">
+                            <i class="fas fa-location-arrow" title="send message" style="font-size: 1.5rem; color: var(--purple)"></i>
+                        </button>
                     </div>
                 </form>
             </div>
