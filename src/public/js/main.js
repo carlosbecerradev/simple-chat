@@ -1,10 +1,31 @@
-io();
+const socket = io();
 
 
 /** Sign up */
-const formSignUp = document.getElementById('registration');
+const formSignUp = document.getElementById('signUp');
 formSignUp.addEventListener('submit', e => {
     e.preventDefault();
+    let formSignUp = document.forms.signUp;
+    let formData = new FormData(formSignUp);
+    let nickname = formData.get('nickname').toLocaleLowerCase(),
+        email = formData.get('email').toLocaleLowerCase(),
+        password = formData.get('password').toLocaleLowerCase();
+    
+    socket.emit('sign up', ({nickname, email, password}), callbackFlag => {
+        if(callbackFlag){
+            registration.style.display = 'none';
+            login.style.display = 'block';
+        } else {
+            let errosSignUp = document.querySelector('.errosSignUp');
+            errosSignUp.innerHTML = `
+                <div class="alert alert-danger">
+                    Email or Nickname are already created. Try another.
+                </div>
+            `;
+            // formSignUp.reset();     
+        }
+    });
+    console.log(nickname, email, password)
 })
 
 
