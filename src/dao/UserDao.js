@@ -14,7 +14,12 @@ const findUserByEmailAndNickname = async ({ email , nickname }) => {
     });
 }
 
+const findUserByEmailAndPassword = async ({ email, password }) => {
+    return await User.find( {email, password} );
+}
+
 module.exports = {
     insertUser,
-    findUserByEmailAndNickname
+    findUserByEmailAndNickname,
+    findUserByEmailAndPassword
 }
