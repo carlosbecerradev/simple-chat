@@ -86,43 +86,8 @@
             </form>
         </div>
         <div class="chat-users--list rounded" >
-            <div class="chat-users--list-scroll">
-                <div class="chat-user hover-item">
-                    <div class="chat-user-img">
-                        <img src="img/profile1.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Lisa Akira</span>
-                    </div>
-                </div>
-                <div class="chat-user hover-item">
-                    <div class="chat-user-img">
-                        <img src="img/profile2.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Celeste Suru</span>
-                    </div>
-                </div>
-                <div class="chat-user hover-item">
-                    <div class="chat-user-img">
-                        <img src="img/profile3.jpg" alt="">
-                    </div>
-                    <div class="chat-user-info">
-                        <span class="chat-user-info--name">Anne Misuri</span>
-                    </div>
-                </div>
-                
-                {{#if usersConnected }}
-                <div id="usersList">
-                    {{#each usersConnected }}
-                    <p style="margin: 1rem 0; background-color: yellow;">
-                        {{nickname}} || {{date}}
-                    </p>
-                    {{/each}}
-                </div>
-                {{else}}
-                <p>No users connected</p>
-                {{/if}}
+            <div id="usersList" class="chat-users--list-scroll">
+                {{!-- users connected --}}
             </div>
         </div>
     </div>

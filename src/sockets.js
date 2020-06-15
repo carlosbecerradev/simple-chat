@@ -1,6 +1,8 @@
 const socketIO = require('socket.io');
 const userDao = require('./dao/UserDao');
 
+let usersConnected = [];
+
 const connection = server => {
     const io = socketIO.listen(server);
 
@@ -32,6 +34,20 @@ const connection = server => {
                 callbackFlag(false);
             } else {
                 callbackFlag(true);
+                socket.nickname = user[0].nickname;
+                usersConnected.push(socket.nickname);
+                updateUsersConnected();
+            }
+
+            socket.on('disconnect', data => {
+                if(!socket.nickname) return;
+                usersConnected.splice(usersConnected.indexOf(socket.nickname), 1);
+                updateUsersConnected();
+            });
+
+            function updateUsersConnected(){
+                io.sockets.emit('update users connected', usersConnected);
+                socket.emit('user connected', socket.nickname);
             }
 
         });

@@ -64,7 +64,8 @@ const searchUser = document.getElementById('searchUser');
 const searchUserInput = document.getElementById('searchUserInput');
 searchUserInput.addEventListener('keyup', e => {           
     
-})
+});
+
 searchUser.addEventListener('submit', e => {
     e.preventDefault();
     console.log(searchUserInput.value)
@@ -76,4 +77,32 @@ const sendMessageInput = document.getElementById('sendMessageInput');
 sendMessage.addEventListener('submit', e => {
     e.preventDefault();
     console.log(sendMessageInput.value)
+});
+
+/** Update users */
+let myUser;
+socket.on('user connected', user => {
+    myUser = user;
+    let userNickname = document.getElementById('userNickname');
+    userNickname.innerHTML = user;
+});
+
+let usersList = document.getElementById('usersList');
+socket.on('update users connected', usersConnected => {
+    let html = '';
+    usersConnected.splice(usersConnected.indexOf(myUser), 1);
+    for(let user of usersConnected){
+        html += `
+            <div class="chat-user hover-item">
+                <div class="chat-user-img">
+                    <img src="img/profile3.jpg" alt="">
+                </div>
+                <div class="chat-user-info">
+                    <span class="chat-user-info--name">${user}</span>
+                </div>
+            </div>
+        `;
+    }
+    console.log(socket.nickanme)
+    usersList.innerHTML = html;
 });
