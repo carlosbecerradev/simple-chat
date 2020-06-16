@@ -12,9 +12,8 @@ const connection = server => {
         socket.on('sign up', async (data, callbackFlag) => {
             console.log('socket-signUp:')
             let {email, nickname, password} = data;
-            console.log(data)
 
-            if(dataSignUpIsInvalid({email, nickname, password})) return callbackFlag(false);
+            if(dataSignUpIsInvalid({ email, nickname, password })) return callbackFlag(false);
 
             let user = await userDao.findUserByEmailAndNickname({email, nickname});
             console.log('user finded', user)
@@ -28,9 +27,8 @@ const connection = server => {
             }
         }); 
 
-        function dataSignUpIsInvalid({email, nickname, password}){
-            if(email === '' || nickname === '' || password === '') return true;
-            
+        function dataSignUpIsInvalid({ email, nickname, password }){
+            if(email === '' || nickname === '' || password === '') return true;            
         }
 
         socket.on('sign in', async (data, callbackFlag) => {
@@ -48,24 +46,27 @@ const connection = server => {
                 updateUsersConnected();
             }
 
-            socket.on('disconnect', data => {
-                if(!socket.nickname) return;
-                usersConnected.splice(usersConnected.indexOf(socket.nickname), 1);
-                updateUsersConnected();
+        });
+        
+
+        function updateUsersConnected(){
+            io.sockets.emit('update users connected', usersConnected);
+            socket.emit('user connected', socket.nickname);
+        }
+        
+
+        socket.on('send message', message => {
+            io.sockets.emit('new message', {
+                message: message,
+                nickname: socket.nickname
             });
+        });
 
-            function updateUsersConnected(){
-                io.sockets.emit('update users connected', usersConnected);
-                socket.emit('user connected', socket.nickname);
-            }
 
-            socket.on('send message', message => {
-                io.sockets.emit('new message', {
-                    message: message,
-                    nickname: socket.nickname
-                });
-            });
-
+        socket.on('disconnect', data => {
+            if(!socket.nickname) return;
+            usersConnected.splice(usersConnected.indexOf(socket.nickname), 1);
+            updateUsersConnected();
         });
 
     });
