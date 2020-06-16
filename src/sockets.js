@@ -32,10 +32,13 @@ const connection = server => {
         }
 
         socket.on('sign in', async (data, callbackFlag) => {
+            console.log('socket-signIn:')
             let { email, password } = data;
 
+            if(dataSignInIsInvalid({ email, password })) return callbackFlag(false);
+
             let user = await userDao.findUserByEmailAndPassword({ email, password });
-            console.log('socket-signIn:',user)
+            console.log(user)
             if(user.length === 0){
                 // user doesnt exists
                 callbackFlag(false);
@@ -47,13 +50,17 @@ const connection = server => {
             }
 
         });
+
+        function dataSignInIsInvalid({ email, password }){
+            if(email === ''  || password === '') return true;            
+        }
         
 
         function updateUsersConnected(){
             io.sockets.emit('update users connected', usersConnected);
             socket.emit('user connected', socket.nickname);
         }
-        
+
 
         socket.on('send message', message => {
             io.sockets.emit('new message', {
