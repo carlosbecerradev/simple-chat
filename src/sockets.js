@@ -31,6 +31,7 @@ const connection = server => {
             if(email === '' || nickname === '' || password === '') return true;            
         }
 
+
         socket.on('sign in', async (data, callbackFlag) => {
             console.log('socket-signIn:')
             let { email, password } = data;
@@ -53,13 +54,13 @@ const connection = server => {
 
         function dataSignInIsInvalid({ email, password }){
             if(email === ''  || password === '') return true;            
-        }
-        
+        }       
 
-        function updateUsersConnected(){
-            io.sockets.emit('update users connected', usersConnected);
-            socket.emit('user connected', socket.nickname);
-        }
+
+        socket.on('user typing', nickname => {
+            console.log(nickname)
+            socket.broadcast.emit('user typing', nickname);
+        });
 
 
         socket.on('send message', message => {
@@ -74,8 +75,13 @@ const connection = server => {
             if(!socket.nickname) return;
             usersConnected.splice(usersConnected.indexOf(socket.nickname), 1);
             updateUsersConnected();
-        });
+        }); 
 
+        function updateUsersConnected(){
+            io.sockets.emit('update users connected', usersConnected);
+            socket.emit('user connected', socket.nickname);
+        }
+        
     });
     
 }

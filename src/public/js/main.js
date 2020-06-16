@@ -111,6 +111,15 @@ sendMessage.addEventListener('submit', e => {
     sendMessage.reset();
 });
 
+sendMessageInput.addEventListener('keypress', e => {
+    console.log(myUser)
+    socket.emit('user typing', myUser);
+});
+
+socket.on('user typing', nickanme => {
+    console.log(`this user ${nickanme} are typing`);
+});
+
 
 /** New message*/
 socket.on('new message', ({ message, nickname }) => {
