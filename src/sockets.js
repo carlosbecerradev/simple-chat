@@ -10,10 +10,15 @@ const connection = server => {
         console.log('New socket:', socket.id);
 
         socket.on('sign up', async (data, callbackFlag) => {
+            console.log('socket-signUp:')
             let {email, nickname, password} = data;
-            
+            console.log(data)
+
+            if(dataSignUpIsInvalid({email, nickname, password})) return callbackFlag(false);
+
             let user = await userDao.findUserByEmailAndNickname({email, nickname});
-            console.log('socket-signUp:',user)
+            console.log('user finded', user)
+
             if(user.length === 0){
                 // user doesnt exists
                 callbackFlag(true);
@@ -23,6 +28,10 @@ const connection = server => {
             }
         }); 
 
+        function dataSignUpIsInvalid({email, nickname, password}){
+            if(email === '' || nickname === '' || password === '') return true;
+            
+        }
 
         socket.on('sign in', async (data, callbackFlag) => {
             let { email, password } = data;
