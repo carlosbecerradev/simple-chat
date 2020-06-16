@@ -50,6 +50,13 @@ const connection = server => {
                 socket.emit('user connected', socket.nickname);
             }
 
+            socket.on('send message', message => {
+                io.sockets.emit('new message', {
+                    message: message,
+                    nickname: socket.nickname
+                });
+            });
+
         });
 
     });

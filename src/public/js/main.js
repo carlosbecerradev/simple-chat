@@ -71,14 +71,6 @@ searchUser.addEventListener('submit', e => {
     console.log(searchUserInput.value)
 });
 
-/** Send message */
-const sendMessage = document.getElementById('sendMessage');
-const sendMessageInput = document.getElementById('sendMessageInput');
-sendMessage.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log(sendMessageInput.value)
-});
-
 /** Update users */
 let myUser;
 socket.on('user connected', user => {
@@ -105,4 +97,50 @@ socket.on('update users connected', usersConnected => {
     }
     console.log(socket.nickanme)
     usersList.innerHTML = html;
+});
+
+
+/** Send message */
+const chatBox = document.getElementById('chatBox');
+const sendMessage = document.getElementById('sendMessage');
+const sendMessageInput = document.getElementById('sendMessageInput');
+sendMessage.addEventListener('submit', e => {
+    e.preventDefault();
+    // console.log(sendMessageInput.value)
+    socket.emit('send message', sendMessageInput.value);
+    sendMessage.reset();
+});
+
+
+/** New message*/
+socket.on('new message', ({ message, nickname }) => {
+    if(nickname === myUser){
+        chatBox.innerHTML += `
+        <div class="message emited">
+            <!-- <div class="message-user-img">
+                    <img src="img/profile5.jpg" alt="" >
+                </div> -->
+            <div class="message-content">
+                <div class="message-text">
+                    <span class="message-text--span">${message}</span>
+                </div>                
+            </div>
+            <div class="message-timeago"></div>
+        </div>
+        `;
+    } else {
+        chatBox.innerHTML += `
+        <div class="message received">
+            <div class="message-user-img" title="${nickname}">
+                <img src="img/profile4.jpg" alt="">
+            </div>
+            <div class="message-content">
+                <div class="message-text">
+                    <span class="message-text--span">${message}</span>
+                </div>
+            </div>
+            <div class="message-timeago"></div>
+        </div>
+        `;
+    }   
 });
