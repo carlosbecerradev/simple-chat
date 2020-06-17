@@ -57,9 +57,9 @@ const connection = server => {
         }       
 
 
-        socket.on('user typing', nickname => {
-            console.log(nickname)
-            socket.broadcast.emit('user typing', nickname);
+        socket.on('user typing', ({ nickname, key, inputEmpty }) => {
+            // console.log(nickname, key, inputEmpty)
+            socket.broadcast.emit('user typing', { nickname, key, inputEmpty });
         });
 
 

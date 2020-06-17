@@ -111,13 +111,26 @@ sendMessage.addEventListener('submit', e => {
     sendMessage.reset();
 });
 
-sendMessageInput.addEventListener('keypress', e => {
-    console.log(myUser)
-    socket.emit('user typing', myUser);
+// user typing feature
+sendMessageInput.addEventListener('keyup', e => {
+    let key = e.key, nickname = myUser, inputEmpty = e.target.value === '' ;
+    // console.log('emit',nickname, key, inputEmpty)
+    socket.emit('user typing', { nickname, key, inputEmpty });
 });
 
-socket.on('user typing', nickanme => {
-    console.log(`this user ${nickanme} are typing`);
+socket.on('user typing', ({ nickname, key, inputEmpty }) => {
+    // console.log('on',nickname, key, inputEmpty)
+    let userTypingDiv = document.getElementById('userTyping');
+    if(key === 'Enter' || inputEmpty === true ){
+        userTypingDiv.style.display = 'none';
+        chatBox.style.paddingTop = '0';
+    } else {
+        userTypingDiv.innerHTML = 
+        `<small>${nickname} are typing now ...</small>`;
+        userTypingDiv.style.display = 'block';
+        chatBox.style.paddingTop = '2rem';
+    }
+    
 });
 
 
