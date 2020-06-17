@@ -107,7 +107,10 @@ const sendMessageInput = document.getElementById('sendMessageInput');
 sendMessage.addEventListener('submit', e => {
     e.preventDefault();
     // console.log(sendMessageInput.value)
-    socket.emit('send message', sendMessageInput.value);
+    let inputValue = sendMessageInput.value.trim();
+    if(inputValue !== ''){
+        socket.emit('send message', inputValue );
+    }
     sendMessage.reset();
 });
 

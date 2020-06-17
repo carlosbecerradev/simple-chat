@@ -64,10 +64,13 @@ const connection = server => {
 
 
         socket.on('send message', message => {
-            io.sockets.emit('new message', {
-                message: message,
-                nickname: socket.nickname
-            });
+            message = message.trim();
+            if(message !== ''){
+                io.sockets.emit('new message', {
+                    message: message,
+                    nickname: socket.nickname
+                });
+            }            
         });
 
 
