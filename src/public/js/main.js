@@ -53,9 +53,6 @@ formSignIn.addEventListener('submit', e => {
 
 });
 
-/** Logout */
-const logoutBtn = document.getElementById('logout');
-
 /** Change image */
 const changeImage = document.getElementById('changeImage');
 
@@ -169,3 +166,9 @@ socket.on('new message', ({ message, nickname }) => {
         `;
     }   
 });
+
+/** Logout */
+const logoutBtn = document.getElementById('logout');
+logoutBtn.addEventListener('click', e => {
+    location.reload(true);
+})
