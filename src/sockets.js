@@ -39,16 +39,17 @@ const connection = server => {
             if(dataSignInIsInvalid({ email, password })) return callbackFlag(false);
 
             let user = await userDao.findUserByEmailAndPassword({ email, password });
-            console.log(user)
-            if(user.length === 0){
-                // user doesnt exists
-                callbackFlag(false);
-            } else {
-                callbackFlag(true);
-                socket.nickname = user[0].nickname;
-                usersConnected.push(socket.nickname);
-                updateUsersConnected();
-            }
+            console.log(user);
+            if(user.length === 0) return callbackFlag(false);
+
+            let userNickname = user[0].nickname;
+
+            if( usersConnected.indexOf(userNickname) !== -1 ) return callbackFlag('isSignIn');
+            
+            callbackFlag(true);
+            socket.nickname = userNickname;
+            usersConnected.push(socket.nickname);
+            updateUsersConnected();
 
         });
 

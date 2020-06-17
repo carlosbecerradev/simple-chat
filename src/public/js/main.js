@@ -32,17 +32,26 @@ formSignUp.addEventListener('submit', e => {
 const formSignIn = document.getElementById('SignIn');
 formSignIn.addEventListener('submit', e => {
     e.preventDefault();
-    let formSignIn = document.forms.SignIn;
-    let formData = new FormData(formSignIn);
-    let email = formData.get('email').toLocaleLowerCase(),
+    const formSignIn = document.forms.SignIn;
+    const formData = new FormData(formSignIn);
+    const email = formData.get('email').toLocaleLowerCase(),
         password = formData.get('password').toLocaleLowerCase();
+    const errosSignIn = document.querySelector('.errosSignIn');
 
     socket.emit('sign in', ({ email, password }), callbackFlag => {
+        
         if(callbackFlag) {
-            globalChat.style.display = 'grid';
-            login.style.display = 'none';
+            if(callbackFlag === 'isSignIn'){
+                errosSignIn.innerHTML = `
+                    <div class="alert alert-danger">
+                        Your account is already connect.
+                    </div>
+                `;
+            } else {
+                globalChat.style.display = 'grid';
+                login.style.display = 'none';
+            }
         } else {
-            let errosSignIn = document.querySelector('.errosSignIn');
             errosSignIn.innerHTML = `
                 <div class="alert alert-danger">
                     Email or password are incorrect.
@@ -170,5 +179,5 @@ socket.on('new message', ({ message, nickname }) => {
 /** Logout */
 const logoutBtn = document.getElementById('logout');
 logoutBtn.addEventListener('click', e => {
-    location.reload(true);
+    location.reload();
 })
