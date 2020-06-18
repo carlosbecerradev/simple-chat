@@ -148,29 +148,24 @@ socket.on('new message', ({ message, nickname }) => {
     if(nickname === myUser){
         chatBox.innerHTML += `
         <div class="message emited">
-            <!-- <div class="message-user-img">
-                    <img src="img/profile5.jpg" alt="" >
-                </div> -->
             <div class="message-content">
                 <div class="message-text">
                     <span class="message-text--span">${message}</span>
                 </div>                
             </div>
-            <div class="message-timeago"></div>
         </div>
         `;
     } else {
         chatBox.innerHTML += `
         <div class="message received">
-            <div class="message-user-img" title="${nickname}">
-                <img src="img/profile4.jpg" alt="">
+            <div class="message-user-nickname" title="${nickname}">
+                <span class="message-user-nickname--span" >${nickname}:</span>
             </div>
             <div class="message-content">
                 <div class="message-text">
                     <span class="message-text--span">${message}</span>
                 </div>
             </div>
-            <div class="message-timeago"></div>
         </div>
         `;
     }   

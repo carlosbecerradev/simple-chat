@@ -21,7 +21,9 @@ body {
 a {
     text-decoration: none;
 }
-
+input, button {
+    outline: none;
+}
 .navigation {
     padding-top: .8rem;
     height: 60px;
@@ -52,7 +54,7 @@ a {
 
 .wellcome {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -294,44 +296,29 @@ a {
 
 .message {
     display: grid;
-    column-gap: 1rem;
+    column-gap: .3rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
 .message.received {
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-columns: auto 5fr;
-    grid-template-areas: "img message" ". timeago";
+    grid-template-areas: "nickname message";
 }
 
 .message.emited {
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 1fr;
-    grid-template-areas: "message" "timeago";
+    grid-template-areas: "message";
 }
 
-.message-user-img {
-    grid-area: img;
-    align-self: flex-end;
-    border-radius: 50%;
-}
-
-.received .message-timeago {
-    justify-self: start;
-}
-
-.message-timeago {
-    grid-area: timeago;
-    justify-self: end;
-    margin: .5rem 0;
-    opacity: .5;
+.message-user-nickname {
+    grid-area: nickname;
 }
 
 .message-content {
     grid-area: message;
-}
-
-.message-text {
-    margin-top: .8rem;
 }
 
 .received .message-text {
@@ -342,37 +329,27 @@ a {
     text-align: right;
 }
 
+.message-user-nickname--span {
+    display: inline-block;
+    padding: .5rem 0;
+}
+
 .message-text--span {
     display: inline-block;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1rem;
+    text-align: left;
+    padding: .5rem;
+    border-radius: 4px;
 }
 
 .emited .message-text--span {
     background-color: var(--blue);
-    border-bottom-right-radius: 0;
     color:white;
-    cursor: pointer;
 }
 
-.received .message-text--span {
-    border: 1px solid var(--purple);
-    border-bottom-left-radius: 0;
-}
 .received .message-text--span:hover {
-    background-color: var(--gray);
     color:var(--purple);
-    cursor: pointer;
 }
 
-.message-user-img img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--purple);
-}
 
 /** LOGIN */
 
