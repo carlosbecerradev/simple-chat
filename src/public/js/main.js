@@ -65,18 +65,6 @@ formSignIn.addEventListener('submit', e => {
 /** Change image */
 const changeImage = document.getElementById('changeImage');
 
-/** Search user */
-const searchUser = document.getElementById('searchUser');
-const searchUserInput = document.getElementById('searchUserInput');
-searchUserInput.addEventListener('keyup', e => {           
-    
-});
-
-searchUser.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log(searchUserInput.value)
-});
-
 /** Update users */
 let myUser;
 socket.on('user connected', user => {
@@ -105,6 +93,39 @@ socket.on('update users connected', usersConnected => {
     usersList.innerHTML = html;
 });
 
+
+/** Search user */
+const searchUser = document.getElementById('searchUser');
+const searchUserInput = document.getElementById('searchUserInput');
+searchUserInput.addEventListener('keyup', e => {     
+    // console.log(e.target.value)   
+    let text = e.target.value.trim();   
+    socket.emit('search user', text);
+});
+
+socket.on('search user list', nicknames => {
+    console.log(nicknames)
+    let html = '';
+    // nicknames.splice(nicknames.indexOf(myUser), 1);
+    for(let user of nicknames){
+        html += `
+            <div class="chat-user hover-item">
+                <div class="chat-user-img">
+                    <img src="img/profile3.jpg" alt="">
+                </div>
+                <div class="chat-user-info">
+                    <span class="chat-user-info--name">${user}</span>
+                </div>
+            </div>
+        `;
+    }
+    usersList.innerHTML = html;
+});
+
+searchUser.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log(searchUserInput.value)
+});
 
 /** Send message */
 const chatBox = document.getElementById('chatBox');

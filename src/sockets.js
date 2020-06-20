@@ -74,6 +74,19 @@ const connection = server => {
             }            
         });
 
+        socket.on('search user', async ( nickname ) => {
+            if(nickname !== ''){
+                let users = await userDao.findUserByNickname(nickname);
+                let nicknames = [];
+                for(let user of users){
+                    nicknames.push(user.nickname);
+                }
+                socket.emit('search user list', nicknames );
+            } else {
+                updateUsersConnected();
+            }
+
+        });
 
         socket.on('disconnect', data => {
             if(!socket.nickname) return;

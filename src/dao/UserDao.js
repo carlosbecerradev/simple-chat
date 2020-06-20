@@ -18,8 +18,13 @@ const findUserByEmailAndPassword = async ({ email, password }) => {
     return await User.find( {email, password} );
 }
 
+const findUserByNickname = async ( nickname ) => {
+    return await User.find( { nickname: { $regex: `^${nickname}` } } );
+}
+
 module.exports = {
     insertUser,
     findUserByEmailAndNickname,
-    findUserByEmailAndPassword
+    findUserByEmailAndPassword,
+    findUserByNickname
 }
