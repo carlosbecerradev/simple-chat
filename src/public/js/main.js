@@ -116,6 +116,7 @@ sendMessage.addEventListener('submit', e => {
     let inputValue = sendMessageInput.value.trim();
     if(inputValue !== ''){
         socket.emit('send message', inputValue );
+        socket.emit('user typing', { nickname: myUser, key: 'Enter', inputEmpty: true });
     }
     sendMessage.reset();
 });
