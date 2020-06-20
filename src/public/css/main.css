@@ -305,12 +305,23 @@ input, button {
     grid-template-rows: auto;
     grid-template-columns: auto 5fr;
     grid-template-areas: "nickname message";
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .message.emited {
     grid-template-rows: auto;
     grid-template-columns: 1fr;
     grid-template-areas: "message";
+    margin-bottom: 0;
+}
+
+.message:first-child {
+    margin-top: 1rem;
+}
+
+.message:last-child {
+    margin-bottom: .5rem;
 }
 
 .message-user-nickname {
