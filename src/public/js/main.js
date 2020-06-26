@@ -191,6 +191,7 @@ socket.on('new message', ({ message, nickname }) => {
         </div>
         `;
     }   
+    chatBox.scrollTop = chatBox.scrollHeight;
 });
 
 /** Logout */
