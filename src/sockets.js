@@ -66,7 +66,7 @@ const connection = server => {
 
         socket.on('send message', message => {
             message = message.trim();
-            if(message !== ''){
+            if(message !== '' && socket.nickname){
                 io.sockets.emit('new message', {
                     message: message,
                     nickname: socket.nickname

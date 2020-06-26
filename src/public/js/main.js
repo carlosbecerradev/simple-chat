@@ -167,31 +167,34 @@ socket.on('user typing', ({ nickname, key, inputEmpty }) => {
 
 /** New message*/
 socket.on('new message', ({ message, nickname }) => {
-    if(nickname === myUser){
-        chatBox.innerHTML += `
-        <div class="message emited">
-            <div class="message-content">
-                <div class="message-text">
-                    <span class="message-text--span">${message}</span>
-                </div>                
-            </div>
-        </div>
-        `;
-    } else {
-        chatBox.innerHTML += `
-        <div class="message received">
-            <div class="message-user-nickname" title="${nickname}">
-                <span class="message-user-nickname--span" >${nickname}:</span>
-            </div>
-            <div class="message-content">
-                <div class="message-text">
-                    <span class="message-text--span">${message}</span>
+    if(nickname && myUser){
+        if(nickname === myUser){
+            chatBox.innerHTML += `
+            <div class="message emited">
+                <div class="message-content">
+                    <div class="message-text">
+                        <span class="message-text--span">${message}</span>
+                    </div>                
                 </div>
             </div>
-        </div>
-        `;
-    }   
-    chatBox.scrollTop = chatBox.scrollHeight;
+            `;
+        } else {
+            chatBox.innerHTML += `
+            <div class="message received">
+                <div class="message-user-nickname" title="${nickname}">
+                    <span class="message-user-nickname--span" >${nickname}:</span>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">
+                        <span class="message-text--span">${message}</span>
+                    </div>
+                </div>
+            </div>
+            `;
+        }   
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
 });
 
 /** Logout */
